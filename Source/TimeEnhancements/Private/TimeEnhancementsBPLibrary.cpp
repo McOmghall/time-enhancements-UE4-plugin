@@ -6,10 +6,4 @@
 UTimeEnhancementsBPLibrary::UTimeEnhancementsBPLibrary(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
 {
-
-}
-
-float UTimeEnhancementsBPLibrary::TimeEnhancementsSampleFunction(float Param)
-{
-	return -1;
 }

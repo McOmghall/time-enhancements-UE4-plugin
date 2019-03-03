@@ -3,6 +3,7 @@
 #include "DelegateTimer.h"
 #include "Engine/World.h"
 #include "TimerManager.h"
+#include "TimeEnhancementsBPLibrary.h"
 
 DEFINE_LOG_CATEGORY(TimeEnhancementsLog);
 
@@ -16,7 +17,7 @@ UDelegateTimer* UDelegateTimer::Init(UObject * WorldContextObject, float Period,
 {
   this->TimeStart = FDateTime::UtcNow();
 
-  WorldContextObject->GetWorld()->GetTimerManager().SetTimer(this->TimerHandle, this, &UDelegateTimer::ExecutionCycle, FMath::Max(Period, 0.016f), true, DelayToFirstExecution);
+  WorldContextObject->GetWorld()->GetTimerManager().SetTimer(this->TimerHandle, this, &UDelegateTimer::ExecutionCycle, FMath::Max(Period, UTimeEnhancementsBPLibrary::SixtyFramesPerSecondFrameDuration()), true, DelayToFirstExecution);
   UE_LOG(TimeEnhancementsLog, Log, TEXT("Created %s with %f + %f"), *this->GetName(), Period, DelayToFirstExecution);
   return this;
 }

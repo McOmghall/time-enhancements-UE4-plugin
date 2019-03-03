@@ -5,6 +5,8 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "TimeEnhancementsBPLibrary.generated.h"
 
+#define SIXTY_FRAMES_PER_SECOND_FRAME_DURATION (1.0f/60.0f)
+
 /* 
 *	Function library class.
 *	Each function in it is expected to be static and represents blueprint node that can be called in any blueprint.
@@ -27,6 +29,10 @@ class UTimeEnhancementsBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Execute Sample function", Keywords = "TimeEnhancements sample test testing"), Category = "TimeEnhancementsTesting")
-	static float TimeEnhancementsSampleFunction(float Param);
+public:
+	UFUNCTION(BlueprintPure, meta = (Keywords = "TimeEnhancements Frames"), Category = "TimeEnhancements")
+	static FORCEINLINE float SixtyFramesPerSecondFrameDuration()
+  {
+    return SIXTY_FRAMES_PER_SECOND_FRAME_DURATION;
+  };
 };

@@ -6,17 +6,15 @@
 
 void FTimeEnhancementsModule::StartupModule()
 {
-	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
-	
+
+  UE_LOG(TimeEnhancementsLog, Log, TEXT("Loading TimeEnhancements Module"));
 }
 
 void FTimeEnhancementsModule::ShutdownModule()
 {
-	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
-	// we call this function before unloading the module.
-	
+  UE_LOG(TimeEnhancementsLog, Log, TEXT("Unloading TimeEnhancements Module"));
 }
 
 #undef LOCTEXT_NAMESPACE
 	
-IMPLEMENT_MODULE(FTimeEnhancementsModule, TimeEnhancements)
+IMPLEMENT_PRIMARY_GAME_MODULE(FTimeEnhancementsModule, TimeEnhancements, "TimeEnhancements")
