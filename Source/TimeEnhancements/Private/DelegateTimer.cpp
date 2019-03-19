@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (C) 2019 Pedro Montoto García - All Rights Reserved
 
 #include "DelegateTimer.h"
 #include "Engine/World.h"

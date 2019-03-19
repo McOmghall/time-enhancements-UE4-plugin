@@ -1,4 +1,8 @@
-// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
+/* Copyright (C) 2019 Pedro Montoto García - All Rights Reserved
+ *
+ * You may use, distribute and modify this code under the
+ * terms of the Apache License version 2.0.
+ */
 
 #pragma once
 
@@ -7,32 +11,21 @@
 
 #define SIXTY_FRAMES_PER_SECOND_FRAME_DURATION (1.0f/60.0f)
 
-/* 
-*	Function library class.
-*	Each function in it is expected to be static and represents blueprint node that can be called in any blueprint.
-*
-*	When declaring function you can define metadata for the node. Key function specifiers will be BlueprintPure and BlueprintCallable.
-*	BlueprintPure - means the function does not affect the owning object in any way and thus creates a node without Exec pins.
-*	BlueprintCallable - makes a function which can be executed in Blueprints - Thus it has Exec pins.
-*	DisplayName - full name of the node, shown when you mouse over the node and in the blueprint drop down menu.
-*				Its lets you name the node using characters not allowed in C++ function names.
-*	CompactNodeTitle - the word(s) that appear on the node.
-*	Keywords -	the list of keywords that helps you to find node when you search for it using Blueprint drop-down menu. 
-*				Good example is "Print String" node which you can find also by using keyword "log".
-*	Category -	the category your node will be under in the Blueprint drop-down menu.
-*
-*	For more info on custom blueprint nodes visit documentation:
-*	https://wiki.unrealengine.com/Custom_Blueprint_Node_Creation
-*/
+/**
+ *	Static time-related helper functions
+ */
 UCLASS()
 class UTimeEnhancementsBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
-
 public:
+
+	/*
+	 * Returns the amount of seconds (standard unreal float semantics, 1.0f = 1s) that a frame takes at 60FPS
+	 */
 	UFUNCTION(BlueprintPure, meta = (Keywords = "TimeEnhancements Frames"), Category = "TimeEnhancements")
 	static FORCEINLINE float SixtyFramesPerSecondFrameDuration()
-  {
-    return SIXTY_FRAMES_PER_SECOND_FRAME_DURATION;
-  };
+	{
+		return SIXTY_FRAMES_PER_SECOND_FRAME_DURATION;
+	};
 };

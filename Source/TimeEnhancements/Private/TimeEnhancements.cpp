@@ -1,4 +1,8 @@
-// Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
+/* Copyright (C) 2019 Pedro Montoto García - All Rights Reserved
+ *
+ * You may use, distribute and modify this code under the
+ * terms of the Apache License version 2.0.
+ */
 
 #include "TimeEnhancements.h"
 
@@ -6,15 +10,14 @@
 
 void FTimeEnhancementsModule::StartupModule()
 {
-
-  UE_LOG(TimeEnhancementsLog, Log, TEXT("Loading TimeEnhancements Module"));
+	UE_LOG(TimeEnhancementsLog, Log, TEXT("Loading TimeEnhancements Module"));
 }
 
 void FTimeEnhancementsModule::ShutdownModule()
 {
-  UE_LOG(TimeEnhancementsLog, Log, TEXT("Unloading TimeEnhancements Module"));
+	UE_LOG(TimeEnhancementsLog, Log, TEXT("Unloading TimeEnhancements Module"));
 }
 
 #undef LOCTEXT_NAMESPACE
-	
+
 IMPLEMENT_PRIMARY_GAME_MODULE(FTimeEnhancementsModule, TimeEnhancements, "TimeEnhancements")
