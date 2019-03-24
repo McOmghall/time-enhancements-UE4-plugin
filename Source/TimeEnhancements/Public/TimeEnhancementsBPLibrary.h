@@ -7,6 +7,7 @@
 #pragma once
 
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "ObjectMacros.h"
 #include "TimeEnhancementsBPLibrary.generated.h"
 
 #define SIXTY_FRAMES_PER_SECOND_FRAME_DURATION (1.0f/60.0f)
@@ -20,7 +21,7 @@ class UTimeEnhancementsBPLibrary : public UBlueprintFunctionLibrary
 	GENERATED_UCLASS_BODY()
 public:
 
-	/*
+	/**
 	 * Returns the amount of seconds (standard unreal float semantics, 1.0f = 1s) that a frame takes at 60FPS
 	 */
 	UFUNCTION(BlueprintPure, meta = (Keywords = "TimeEnhancements Frames"), Category = "TimeEnhancements")

@@ -6,3 +6,9 @@
 
 #include "TimeEnhancementsBPLibrary.h"
 #include "TimeEnhancements.h"
+
+UTimeEnhancementsBPLibrary::UTimeEnhancementsBPLibrary(const FObjectInitializer& FObjectInitializer)
+	: Super(FObjectInitializer)
+{
+
+}
