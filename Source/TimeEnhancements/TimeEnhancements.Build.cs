@@ -31,6 +31,7 @@ public class TimeEnhancements : ModuleRules
 		{
 			"CoreUObject",
 			"Engine",
+            "BlueprintGraph",
 		}
 		);
 	}

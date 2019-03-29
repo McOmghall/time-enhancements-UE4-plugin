@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (C) 2019 Pedro Montoto García - All Rights Reserved
 
 #include "CurveFloatDelegateTimer.h"
 
@@ -23,7 +23,8 @@ void UCurveFloatDelegateTimer::FireCurveEvalTick(const UDelegateTimer * Timer, f
   UE_LOG(TimeEnhancementsLog, Log, TEXT("Timer %s in UCurveFloatDelegateTimer::FireCurveEvalTick"), *this->GetName());
   if (this->CurveEvalTick.IsBound())
   {
-    float TimeToEvalCurve = this->bLoops ? FMath::Fmod(ElapsedTime, this->CurveDuration) : this->CurveDuration;
+	float ElapsedTimeSinceFirst = (Timer->TimeLastExecution - Timer->TimeFirstExecution).GetTotalSeconds();
+    float TimeToEvalCurve = this->bLoops ? FMath::Fmod(ElapsedTimeSinceFirst, this->CurveDuration) : this->CurveDuration;
     this->CurveEvalTick.Broadcast(this, ElapsedTime, TimeSinceLast, this->Curve->GetFloatValue(TimeToEvalCurve), TimeToEvalCurve);
   }
 }

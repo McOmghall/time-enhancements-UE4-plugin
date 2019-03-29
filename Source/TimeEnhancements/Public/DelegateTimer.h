@@ -6,6 +6,7 @@
 #include "Engine/EngineTypes.h"
 #include "Kismet/BlueprintAsyncActionBase.h"
 #include "TimeEnhancements.h"
+#include "CurveFloatDelegateTimer.h"
 #include "DelegateTimer.generated.h"
 
 // This fires every time the configured period fires
