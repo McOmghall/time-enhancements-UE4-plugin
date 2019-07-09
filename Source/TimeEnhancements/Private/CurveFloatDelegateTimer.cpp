@@ -1,4 +1,4 @@
-// Copyright (C) 2019 Pedro Montoto García - All Rights Reserved
+// Copyright (C) 2019 Pedro Montoto Garcï¿½a - All Rights Reserved
 
 #include "CurveFloatDelegateTimer.h"
 

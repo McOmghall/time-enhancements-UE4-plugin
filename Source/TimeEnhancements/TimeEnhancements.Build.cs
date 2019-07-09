@@ -30,9 +30,8 @@ public class TimeEnhancements : ModuleRules
 		new string[]
 		{
 			"CoreUObject",
-			"Engine",
-            "BlueprintGraph",
-		}
+			"Engine"
+        }
 		);
 	}
 }
