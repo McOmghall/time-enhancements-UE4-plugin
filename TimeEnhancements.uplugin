@@ -13,11 +13,16 @@
   "CanContainContent": true,
   "IsBetaVersion": true,
   "Installed": false,
-  "Modules": [
-    {
-      "Name": "TimeEnhancements",
-      "Type": "Runtime",
-      "LoadingPhase": "Default"
-    }
-  ]
+	"Modules": [
+		{
+			"Name": "TimeEnhancements",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "TimeEnhancementsEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	]
 }

@@ -40,7 +40,7 @@ public:
 	virtual void SetState(FName NewState);
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere)
 	FName InitialState = FName("Init");
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, ReplicatedUsing = OnRep_State)
