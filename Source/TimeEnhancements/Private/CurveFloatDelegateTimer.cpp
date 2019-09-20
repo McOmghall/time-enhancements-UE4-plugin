@@ -8,13 +8,16 @@ UCurveFloatDelegateTimer* UCurveFloatDelegateTimer::CreateCurveFloatDelegateTime
   return Timer->Init(WorldContextObject, Period, DelayToFirstExecution, Curve, bLoops, CurveDuration);
 }
 
-UCurveFloatDelegateTimer* UCurveFloatDelegateTimer::Init(UObject* WorldContextObject, float Period, float DelayToFirstExecution, const UCurveFloat* Curve, bool bLoops, float CurveDuration)
+UCurveFloatDelegateTimer* UCurveFloatDelegateTimer::Init(UObject* WorldContextObject, float Period, float DelayToFirstExecution, const UCurveFloat* InCurve, bool InbLoops, float InCurveDuration)
 {
   UDelegateTimer* AuxDelegate = UDelegateTimer::CreateDelegateTimer(WorldContextObject, Period, DelayToFirstExecution);
   AuxDelegate->TickExec.AddDynamic(this, &UCurveFloatDelegateTimer::FireCurveEvalTick);
-  this->Curve = Curve == nullptr ? NewObject<UCurveFloat>() : Curve;
-  this->bLoops = bLoops;
-  this->CurveDuration = CurveDuration == 0.0f ? Curve->GetCurves()[0].CurveToEdit->GetLastKey().Time : CurveDuration;
+  Curve = InCurve == nullptr ? NewObject<UCurveFloat>() : InCurve;
+  bLoops = InbLoops;
+  float TimeStart = 0.0f;
+  float TimeEnd = 0.0f;
+  InCurve->GetCurves()[0].CurveToEdit->GetTimeRange(TimeStart, TimeEnd);
+  CurveDuration = InCurveDuration == 0.0f ? TimeEnd - TimeStart : InCurveDuration;
   return this;
 }
 
@@ -24,7 +27,7 @@ void UCurveFloatDelegateTimer::FireCurveEvalTick(const UDelegateTimer * Timer, f
   if (this->CurveEvalTick.IsBound())
   {
 	float ElapsedTimeSinceFirst = (Timer->TimeLastExecution - Timer->TimeFirstExecution).GetTotalSeconds();
-    float TimeToEvalCurve = this->bLoops ? FMath::Fmod(ElapsedTimeSinceFirst, this->CurveDuration) : this->CurveDuration;
-    this->CurveEvalTick.Broadcast(this, ElapsedTime, TimeSinceLast, this->Curve->GetFloatValue(TimeToEvalCurve), TimeToEvalCurve);
+    float TimeToEvalCurve = bLoops ? FMath::Fmod(ElapsedTimeSinceFirst, CurveDuration) : CurveDuration;
+    CurveEvalTick.Broadcast(this, ElapsedTime, TimeSinceLast, Curve->GetFloatValue(TimeToEvalCurve), TimeToEvalCurve);
   }
 }
