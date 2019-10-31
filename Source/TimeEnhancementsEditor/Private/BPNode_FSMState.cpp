@@ -11,7 +11,7 @@
 #include "EdGraphSchema_K2_Actions.h"
 #include "KismetCompilerMisc.h"
 #include "KismetCompiler.h"
-#include "KismetEditorUtilities.h"
+#include "Kismet2/KismetEditorUtilities.h"
 #include "Kismet2/BlueprintEditorUtils.h"
 
 #define LOCTEXT_NAMESPACE "FTimeEnhancementsEditorModule"
@@ -143,6 +143,13 @@ UK2Node_ComponentBoundEvent* UBPNode_FSMState::FindOrCreateComponentBoundEvent(F
 	const FName FSMEventName = "StateEvent";
 	UObjectProperty* VariableProperty = FindField<UObjectProperty>(GetBlueprint()->SkeletonGeneratedClass, FSMName);
 	UMulticastDelegateProperty* DelegateProperty = FindField<UMulticastDelegateProperty>(FSMClass, FSMEventName);
+
+	if (!VariableProperty || !DelegateProperty)
+	{
+		CompilerContext.MessageLog.Error(*LOCTEXT("UBPNode_FSMState.NoStateMachineNameError", "Node @@: FiniteStateMachineComponent with given name not found in class").ToString(), this);
+		CompilerContext.MessageLog.EndEvent();
+		return nullptr;
+	}
 
 	auto TryGetNode = [](UMulticastDelegateProperty* DelegateProperty, UObjectProperty* VariableProperty, FKismetCompilerContext& CompilerContext, UEdGraph* SourceGraph) {
 

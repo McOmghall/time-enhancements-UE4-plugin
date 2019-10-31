@@ -41,26 +41,26 @@ public:
 	 * @param TimeSinceLast The amount of seconds since the object's last execution
 	 * @see UDelegateTimer::CreateDelegateTimer
 	 */
-	UPROPERTY(BlueprintAssignable)
+	UPROPERTY(BlueprintAssignable, Category = "Time Enhancements|Delegate Timer")
 	FDelegateTimerExec TickExec;
 
 	/**
 	 * The time of this object's Init 
 	 * Usually just after creation time, using UDelegateTimer::CreateDelegateTimer
 	 */
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly, Category = "Time Enhancements|Delegate Timer")
 	FDateTime TimeStart;
 
 	/**
 	 * The time of this object's first fired event, equal to 0 Ticks if never fired
 	 */
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly, Category = "Time Enhancements|Delegate Timer")
 	FDateTime TimeFirstExecution;
 
 	/**
 	 * The time of this object's latest fired event, equal to 0 Ticks if never fired
 	 */
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly, Category = "Time Enhancements|Delegate Timer")
 	FDateTime TimeLastExecution;
 
 protected:

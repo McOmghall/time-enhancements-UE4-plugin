@@ -2,7 +2,7 @@
 
 #include "FiniteStateMachineComponent.h"
 #include "GameFramework/Actor.h"
-#include "UnrealNetwork.h"
+#include "Net/UnrealNetwork.h"
 
 // Sets default values for this component's properties
 UFiniteStateMachineComponent::UFiniteStateMachineComponent()

@@ -6,8 +6,9 @@
 
 #pragma once
 
+#include "CoreMinimal.h"
+#include "UObject/ObjectMacros.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "ObjectMacros.h"
 #include "TimeEnhancementsBPLibrary.generated.h"
 
 #define SIXTY_FRAMES_PER_SECOND_FRAME_DURATION (1.0f/60.0f)
